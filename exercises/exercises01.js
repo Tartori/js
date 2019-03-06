@@ -22,4 +22,12 @@ function transformString(s) {
   }
 }
 
-console.log
+function transformCharStupid(c) {
+  for (var a in alphabet) {
+    s = split("=");
+    if (c === s[0]) {
+      return s[1];
+    }
+  }
+  return "unknown";
+}

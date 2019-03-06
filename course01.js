@@ -22,3 +22,17 @@ console.log(x + Number("10"))
 console.log(bob);
 
 var bob = "Bob";
+
+
+
+var square = function (x) {
+  return x * x;
+};
+
+console.log(square);
+
+console.log(square(12));
+
+var f = square;
+f(13);
+
