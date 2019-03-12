@@ -7,10 +7,20 @@ function SingleLineChar(value, string) {
   this.string = string;
 }
 
+SingleLineChar.prototype.render = function () {
+  return this.string;
+}
+
 function MultiLineChar(value, lines) {
   Char.call(this, value);
   this.lines = lines;
 }
+
+
+MultiLineChar.prototype.render = function (line) {
+  return this.lines[line];
+}
+
 
 function Font(name, chars, lineheight) {
   this.name = name;
@@ -39,10 +49,7 @@ Font.prototype.render = function (text) {
 Font.prototype.renderChar = function (char, line) {
   var character = this.alphabet[char];
   if (character) {
-    if (character instanceof SingleLineChar) {
-      return character.string;
-    }
-    return character.lines[line];
+    return character.render(line);
   }
   else {
     return char;
