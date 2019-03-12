@@ -97,6 +97,13 @@ for (var i = 0; i < alphabet.length; i++) {
   chars.push(new MultiLineChar(char[0], char[1].split("@")));
 }
 
-var dollar = new Font("dollar", chars, 11);
-dollar.write("JS sucks".toUpperCase());
+iso.write("abcdefghij".toUpperCase());
+iso.write("klmnopqrst".toUpperCase());
+iso.write("uvwxyz".toUpperCase());
 
+var dollar = new Font("dollar", chars, 12);
+
+dollar.write("JS sucks!");
+
+dollar.write("abcdefghijklmnopqrstuvwxyz.?".toUpperCase());
+dollar.write("abcdefghijklmnopqrstuvwxyz!");
