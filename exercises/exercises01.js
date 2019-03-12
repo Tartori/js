@@ -18,6 +18,7 @@ function transformChar(c) {
 
 function transformString(s) {
   for (var a in s) {
+    console.log(a);
     console.log(transformChar(s[a]));
   }
 }
@@ -31,3 +32,7 @@ function transformCharStupid(c) {
   }
   return "unknown";
 }
+
+
+
+transformString("i can do some morse");
