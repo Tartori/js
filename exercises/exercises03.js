@@ -1,3 +1,12 @@
+function extend(base, sub) {
+  var orProto = sub.prototype;
+  sub.prototype = Object.create(base.prototype);
+  for (var key in orProto) {
+    sub.prototype[key] = orProto[key];
+  }
+  Object.defineProperty(sub.prototype, 'constructor', { enumerable: false, value: sub });
+}
+
 function Char(value) {
   this.value = value;
 }
@@ -6,6 +15,7 @@ function SingleLineChar(value, string) {
   Char.call(this, value);
   this.string = string;
 }
+extend(Char, SingleLineChar);
 
 SingleLineChar.prototype.render = function () {
   return this.string;
@@ -15,7 +25,7 @@ function MultiLineChar(value, lines) {
   Char.call(this, value);
   this.lines = lines;
 }
-
+extend(Char, MultiLineChar);
 
 MultiLineChar.prototype.render = function (line) {
   return this.lines[line];
@@ -33,15 +43,14 @@ function Font(name, chars, lineheight) {
 }
 
 Font.prototype.render = function (text) {
-  var line = "";
+  var line = [];
   for (var i = 0; i < this.lineheight; i++) {
-    if (i) {
-      line += "\n";
-    }
+    var tempLine = "";
     for (var j in text) {
       var char = text[j];
-      line += this.renderChar(char, i);
+      tempLine += this.renderChar(char, i);
     }
+    line.push(tempLine);
   }
   return line;
 }
@@ -58,7 +67,9 @@ Font.prototype.renderChar = function (char, line) {
 
 Font.prototype.write = function (text, to) {
   to = to || console.log;
-  to(this.render(text));
+  var toprint = this.render(text);
+  var toprintArray = Array.isArray(toprint) ? toprint : new Array(toprint);
+  toprintArray.forEach((item, _) => to(item));
 }
 
 
@@ -104,13 +115,30 @@ for (var i = 0; i < alphabet.length; i++) {
   chars.push(new MultiLineChar(char[0], char[1].split("@")));
 }
 
-iso.write("abcdefghij".toUpperCase());
-iso.write("klmnopqrst".toUpperCase());
-iso.write("uvwxyz".toUpperCase());
+// iso.write("abcdefghij".toUpperCase());
+// iso.write("klmnopqrst".toUpperCase());
+// iso.write("uvwxyz".toUpperCase());
 
 var dollar = new Font("dollar", chars, 12);
 
 dollar.write("JS sucks!");
 
-dollar.write("abcdefghijklmnopqrstuvwxyz.?".toUpperCase());
-dollar.write("abcdefghijklmnopqrstuvwxyz!");
+// dollar.write("abcdefghijklmnopqrstuvwxyz.?".toUpperCase());
+// dollar.write("abcdefghijklmnopqrstuvwxyz!");
+
+
+var alphabetStringSlim = ' @@  @  @  @  @@@A@@____ @|__| @|  | @     @@@B@@___  @|__] @|__] @     @@@C@@____ @|    @|___ @     @@@D@@___  @|  \\ @|__/ @     @@@E@@____ @|___ @|___ @     @@@F@@____ @|___ @|    @     @@@G@@____ @| __ @|__] @     @@@H@@_  _ @|__| @|  | @     @@@I@@_ @| @| @  @@@J@@ _ @ | @_| @   @@@K@@_  _ @|_/  @| \\_ @     @@@L@@_    @|    @|___ @     @@@M@@_  _ @|\\/| @|  | @     @@@N@@_  _ @|\\ | @| \\| @     @@@O@@____ @|  | @|__| @     @@@P@@___  @|__] @|    @     @@@Q@@____ @|  | @|_\\| @     @@@R@@____ @|__/ @|  \\ @     @@@S@@____ @[__  @___] @     @@@T@@___ @ |  @ |  @    @@@U@@_  _ @|  | @|__| @     @@@V@@_  _ @|  | @ \\/  @     @@@W@@_ _ _ @| | | @|_|_| @      @@@X@@_  _ @ \\/  @_/\\_ @     @@@Y@@_   _ @ \\_/  @  |   @      @@@Z@@___  @  /  @ /__ @     ';
+
+
+
+
+var chars = [];
+var alphabet = alphabetStringSlim.split("@@@");
+for (var i = 0; i < alphabet.length; i++) {
+  var char = alphabet[i].split("@@");
+  chars.push(new MultiLineChar(char[0], char[1].split("@")));
+}
+
+var slim = new Font("dollar", chars, 4);
+
+slim.write("JS sucks".toUpperCase());

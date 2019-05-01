@@ -1,0 +1,6 @@
+<div *ngIf="!selectedBook">
+  <app-book-table [books]="books" (uploaded)="selectBook($event)"></app-book-table>
+</div>
+<div *ngIf="selectedBook">
+  <app-catalog-detail-view [book]="selectedBook" (uploaded)="selectBook($event)"></app-catalog-detail-view>
+</div>
