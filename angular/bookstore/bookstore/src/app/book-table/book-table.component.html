@@ -1,11 +1,13 @@
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>ISBN</th>
-      <th>title</th>
+      <th>Title</th>
       <th>Author</th>
       <th>Price</th>
-      <th></th>
+      <th>Publisher</th>
+      <th>Year</th>
+      <th>Number of Pages</th>
     </tr>
   </thead>
   <tr *ngFor="let book of books" (click)="selectBook(book)">
@@ -13,5 +15,8 @@
     <td>{{ book.title }}</td>
     <td>{{ book.author }}</td>
     <td>{{ book.price }}$</td>
+    <td>{{ book.publisher }}</td>
+    <td>{{ book.year }}</td>
+    <td>{{ book.numberOfPages }}</td>
   </tr>
 </table>

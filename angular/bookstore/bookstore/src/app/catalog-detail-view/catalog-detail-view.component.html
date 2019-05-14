@@ -1,21 +1,22 @@
 <button (click)="selectBook()">Back</button>
+<div class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+  <h2>{{book.title}}</h2>
+  <br />
+  {{book.isbn}}
+  <br />
+  {{book.author}}
+  <br />
+  {{book.price}}$
+  <br />
+  {{book.publisher}}
+  <br />
+  {{book.year}}
+  <br />
+  {{book.binding.toString()}}
+  <br />
+  {{book.numberOfPages}}
+  <br />
+  <img [src]="book.imgUrl">
 
-<h2>{{book.title}}</h2>
-<br />
-{{book.isbn}}
-<br />
-{{book.author}}
-<br />
-{{book.price}}$
-<br />
-{{book.publisher}}
-<br />
-{{book.year}}
-<br />
-{{book.binding.toString()}}
-<br />
-{{book.numberOfPages}}
-<br />
-<img [src]="book.imgUrl">
-
-<p>{{book.description}}</p>
+  <p>{{book.description}}</p>
+</div>

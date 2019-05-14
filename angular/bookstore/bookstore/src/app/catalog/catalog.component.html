@@ -1,6 +1,16 @@
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-default">$earch</span>
+  </div>
+  <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" [(ngModel)]="searchText"
+    (input)="searchBook()">
+</div>
+
 <div *ngIf="!selectedBook">
   <app-book-table [books]="books" (uploaded)="selectBook($event)"></app-book-table>
 </div>
 <div *ngIf="selectedBook">
   <app-catalog-detail-view [book]="selectedBook" (uploaded)="selectBook($event)"></app-catalog-detail-view>
 </div>
+
+<p>{{errorText}}</p>
