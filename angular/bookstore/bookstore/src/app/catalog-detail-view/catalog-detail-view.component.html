@@ -1,4 +1,7 @@
-<button (click)="selectBook()">Back</button>
+<button (click)="deselectBook()">Back</button>
+<button (click)="addBookToOrder()">Add to Order</button>
+<p>{{errorText}}</p>
+<p>{{successText}}</p>
 <div class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
   <h2>{{book.title}}</h2>
   <br />
