@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../shared/book';
-import { BOOK_DATA } from '../shared/book-data';
 import { CatalogService } from '../services/CatalogService';
 @Component({
   selector: 'app-catalog',
@@ -14,7 +13,7 @@ export class CatalogComponent implements OnInit {
   public errorText: string;
 
   constructor(private catalogService: CatalogService) {
-    this.books = BOOK_DATA;
+    this.searchBook();
   }
 
   ngOnInit() {

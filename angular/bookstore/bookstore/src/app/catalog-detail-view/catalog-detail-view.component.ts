@@ -25,10 +25,11 @@ export class CatalogDetailViewComponent implements OnInit {
   public addBookToOrder() {
     this.errorText = "";
     this.successText = "";
-    this.orderService.addBook(this.book)
+    this.orderService.setBook(this.book)
       .then(_ => this.successText = "Successfully added book")
-      .then(_ => this.router.navigateByUrl('/customer-details'))
-      .catch(error => { this.errorText = error });
+      .then(_ => this.orderService.getCustomer())
+      .then(_ => this.router.navigateByUrl('/catalog-summary'))
+      .catch(_ => this.router.navigateByUrl('/customer-details'))
   }
 
   public deselectBook() {

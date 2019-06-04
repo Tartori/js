@@ -1,0 +1,6 @@
+{
+  "/api": {
+    "target": "http://distsys.ch:1450",
+    "secure": false
+  }
+}

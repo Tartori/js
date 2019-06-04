@@ -41,8 +41,8 @@
           expirationMonth is required
         </div>
         <label for="expirationYear">expirationYear</label>
-        <input type="number" class="form-control" id="expirationYear" required pattern="^(19|2[0-9])$" min="
-          {{curYear}}" max=" 29" [(ngModel)]="model.creditCard.expirationYear" name="expirationYear"
+        <input type="number" class="form-control" id="expirationYear" required pattern="^20(19|2[0-9])$" min="
+          {{curYear}}" max="2029" [(ngModel)]="model.creditCard.expirationYear" name="expirationYear"
           #expirationYear="ngModel">
         <div [hidden]="expirationYear.valid || expirationYear.pristine" class="alert alert-danger">
           expirationYear is required

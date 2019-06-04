@@ -1,5 +1,5 @@
-<button (click)="deselectBook()">Back</button>
-<button (click)="addBookToOrder()">Add to Order</button>
+<button (click)="back()">Back</button>
+<button (click)="submitOrder()">Submit</button>
 <p>{{errorText}}</p>
 <p>{{successText}}</p>
 <div class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
@@ -21,5 +21,13 @@
   <br />
   <img [src]="book.imageUrl">
 
-  <p>{{book.description}}</p>
+  <p>
+    {{customer.firstName}}
+  </p>
+  <p>
+    {{customer.lastName}}
+  </p>
+  <p>
+    {{customer.email}}
+  </p>
 </div>

@@ -27,6 +27,8 @@ export class CustomerDetailsComponent implements OnInit {
     this.errorText = "";
     this.orderService.setCustomer(this.model)
       .then(_ => this.successText = "")
-      .catch(error => { this.errorText = error });
+      .then(_ => this.orderService.getBook())
+      .then(_ => this.router.navigateByUrl('/catalog-summary'))
+      .catch(_ => this.router.navigateByUrl('/catalog'))
   }
 }

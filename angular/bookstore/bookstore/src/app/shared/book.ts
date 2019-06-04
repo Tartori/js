@@ -11,6 +11,6 @@ export class Book {
     public binding: BookBinding,
     public numberOfPages: number,
     public description: string,
-    public imgUrl: string) { }
+    public imageUrl: string) { }
 
 }
