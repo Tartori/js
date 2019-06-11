@@ -68,6 +68,7 @@ export class OrderService {
                 return number;
             })
             .catch((response: HttpErrorResponse) => {
+                console.log("wtf happened")
                 throw response.statusText + ': ' + response.error.message;
             });
     }
